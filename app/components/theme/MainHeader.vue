@@ -1,8 +1,5 @@
 <template>
-  <div class="bg-slate-50">
-    <ThemeMainHeader />
-    <slot />
-  </div>
+  <div></div>
 </template>
 
 <script lang="ts" setup></script>
