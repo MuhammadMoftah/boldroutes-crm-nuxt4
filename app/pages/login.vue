@@ -65,16 +65,15 @@ const form = reactive({
   password: "password",
 });
 
-const { signIn } = useAuth();
 const router = useRouter();
 const loading = ref(false);
+const { signIn } = useAuth();
 const login = async () => {
   loading.value = true;
   try {
-    await signIn({ ...form });
-    // loading.value = false;
-    // await router.push(   "/");
+    await signIn({ ...form }, { redirect: true, callbackUrl: "/" });
     useToast().showSuccess("Login successful");
+    loading.value = false;
   } catch (err) {
     loading.value = false;
     if (err?.response?.status == 403) useToast().errorHandler(err);

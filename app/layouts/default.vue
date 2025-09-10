@@ -1,7 +1,5 @@
 <template>
-  <div class="bg-slate-500 size-40 rounded-md">
-    default layout
-
+  <div class="bg-slate-50">
     <slot />
   </div>
 </template>
