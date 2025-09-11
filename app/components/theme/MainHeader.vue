@@ -114,13 +114,13 @@
             >
               <div class="flex h-7 w-7 items-center justify-center rounded-full bg-slate-900">
                 <span class="text-xs font-medium text-white">
-                  {{ getUserInitials(data.data) }}
+                  {{ getUserInitials(data?.data) }}
                 </span>
               </div>
               <div class="text-left">
                 <div class="text-xs text-slate-500">Welcome</div>
                 <div class="text-sm font-semibold text-slate-600">
-                  {{ getUserDisplayName(data.data) }}
+                  {{ getUserDisplayName(data?.data) }}
                 </div>
               </div>
               <IconsChevronDownIcon

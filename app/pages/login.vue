@@ -78,7 +78,7 @@ const login = async () => {
         callbackUrl: '/',
       }
     )
-    useToast().showSuccess('Login successful')
+    // useToast().showSuccess('Login successful')
     loading.value = false
   } catch (err) {
     loading.value = false
