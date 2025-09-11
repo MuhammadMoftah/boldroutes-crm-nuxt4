@@ -12,7 +12,7 @@
       stroke-linecap="round"
       stroke-linejoin="round"
       stroke-width="2"
-      d="M13 10V3L4 14h7v7l9-11h-7z"
+      d="M19 9l-7 7-7-7"
     />
   </svg>
 </template>
