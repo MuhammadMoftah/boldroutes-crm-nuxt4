@@ -1,9 +1,13 @@
 <template>
-  <div>welcome {{ data.data.name }}</div>
+  <div>welcome {{ (data as any)?.data?.name || (data as any)?.data?.email || 'User' }}</div>
 </template>
 
 <script lang="ts" setup>
-const { status, data, lastRefreshedAt, token, getSession, signUp, signIn, signOut } = useAuth()
+definePageMeta({
+  middleware: 'authenticated',
+})
+
+const { data } = useAuth()
 </script>
 
 <style></style>

@@ -4,8 +4,8 @@
   >
     <div class="container mx-auto px-4 py-8">
       <!-- Header -->
-      <div class="text-center mb-8">
-        <h1 class="text-4xl font-bold text-gray-800 dark:text-white mb-2">
+      <div class="mb-8 text-center">
+        <h1 class="mb-2 text-4xl font-bold text-gray-800 dark:text-white">
           Welcome to BoldRoutes CRM
         </h1>
         <p class="text-gray-600 dark:text-gray-300">
@@ -14,49 +14,39 @@
       </div>
 
       <!-- Main Content -->
-      <div class="max-w-4xl mx-auto">
+      <div class="mx-auto max-w-4xl">
         <!-- User Status Card -->
-        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 mb-8">
-          <div v-if="auth.user" class="text-center">
+        <div class="mb-8 rounded-xl bg-white p-8 shadow-lg dark:bg-gray-800">
+          <div v-if="data?.data" class="text-center">
             <!-- Welcome Message for Logged In User -->
             <div class="mb-6">
               <div
-                class="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center"
+                class="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-purple-600"
               >
-                <span class="text-white text-2xl font-bold">
-                  {{ getUserInitials(auth.user) }}
+                <span class="text-2xl font-bold text-white">
+                  {{ getUserInitials(data?.data) }}
                 </span>
               </div>
-              <h2
-                class="text-2xl font-semibold text-gray-800 dark:text-white mb-2"
-              >
-                Welcome back, {{ getUserDisplayName(auth.user) }}! 👋
+              <h2 class="mb-2 text-2xl font-semibold text-gray-800 dark:text-white">
+                Welcome back, {{ getUserDisplayName(data?.data) }}! 👋
               </h2>
-              <p class="text-gray-600 dark:text-gray-300 mb-4">
-                You're successfully logged in and ready to manage your leads and
-                customers.
+              <p class="mb-4 text-gray-600 dark:text-gray-300">
+                You're successfully logged in and ready to manage your leads and customers.
               </p>
             </div>
 
             <!-- User Info -->
-            <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 mb-6">
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+            <div class="mb-6 rounded-lg bg-gray-50 p-4 dark:bg-gray-700">
+              <div class="grid grid-cols-1 gap-4 text-sm md:grid-cols-2">
                 <div>
-                  <span class="font-medium text-gray-700 dark:text-gray-300"
-                    >Email:</span
-                  >
-                  <span class="ml-2 text-gray-600 dark:text-gray-400">{{
-                    auth.user.email
-                  }}</span>
+                  <span class="font-medium text-gray-700 dark:text-gray-300">Email:</span>
+                  <span class="ml-2 text-gray-600 dark:text-gray-400">{{ data?.data?.email }}</span>
                 </div>
-                <div v-if="auth.user.role">
-                  <span class="font-medium text-gray-700 dark:text-gray-300"
-                    >Role:</span
-                  >
-                  <span
-                    class="ml-2 text-gray-600 dark:text-gray-400 capitalize"
-                    >{{ auth.user.role }}</span
-                  >
+                <div v-if="data?.data?.role">
+                  <span class="font-medium text-gray-700 dark:text-gray-300">Role:</span>
+                  <span class="ml-2 text-gray-600 capitalize dark:text-gray-400">{{
+                    data?.data?.role
+                  }}</span>
                 </div>
               </div>
             </div>
@@ -67,14 +57,14 @@
                 to="/leads"
                 class="btn btn-primary hover:btn-primary-focus transition-all duration-200"
               >
-                <IconsUsersIcon class="w-5 h-5 mr-2" />
+                <IconsUsersIcon class="mr-2 h-5 w-5" />
                 Manage Leads
               </NuxtLink>
               <button
                 @click="logout"
                 class="btn btn-outline hover:btn-outline-focus transition-all duration-200"
               >
-                <IconsLogoutIcon class="w-5 h-5 mr-2" />
+                <IconsLogoutIcon class="mr-2 h-5 w-5" />
                 Logout
               </button>
             </div>
@@ -84,20 +74,15 @@
           <div v-else class="text-center">
             <div class="mb-6">
               <div
-                class="w-20 h-20 bg-gray-200 dark:bg-gray-600 rounded-full mx-auto mb-4 flex items-center justify-center"
+                class="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-gray-200 dark:bg-gray-600"
               >
-                <IconsUserIcon
-                  class="w-10 h-10 text-gray-400 dark:text-gray-500"
-                />
+                <IconsUserIcon class="h-10 w-10 text-gray-400 dark:text-gray-500" />
               </div>
-              <h2
-                class="text-2xl font-semibold text-gray-800 dark:text-white mb-2"
-              >
+              <h2 class="mb-2 text-2xl font-semibold text-gray-800 dark:text-white">
                 No user logged in yet
               </h2>
-              <p class="text-gray-600 dark:text-gray-300 mb-4">
-                Please log in to access your CRM dashboard and manage your
-                leads.
+              <p class="mb-4 text-gray-600 dark:text-gray-300">
+                Please log in to access your CRM dashboard and manage your leads.
               </p>
             </div>
 
@@ -107,7 +92,7 @@
                 to="/login"
                 class="btn btn-primary hover:btn-primary-focus transition-all duration-200"
               >
-                <IconsLoginIcon class="w-5 h-5 mr-2" />
+                <IconsLoginIcon class="mr-2 h-5 w-5" />
                 Login to Your Account
               </NuxtLink>
             </div>
@@ -115,36 +100,24 @@
         </div>
 
         <!-- Additional Info -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div
-            class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 text-center"
-          >
-            <IconsChartBarIcon class="w-8 h-8 text-blue-500 mx-auto mb-3" />
-            <h3 class="font-semibold text-gray-800 dark:text-white mb-2">
-              Analytics
-            </h3>
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div class="rounded-lg bg-white p-6 text-center shadow-md dark:bg-gray-800">
+            <IconsChartBarIcon class="mx-auto mb-3 h-8 w-8 text-blue-500" />
+            <h3 class="mb-2 font-semibold text-gray-800 dark:text-white">Analytics</h3>
             <p class="text-sm text-gray-600 dark:text-gray-300">
               Track your sales performance and customer insights
             </p>
           </div>
-          <div
-            class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 text-center"
-          >
-            <IconsUsersIcon class="w-8 h-8 text-green-500 mx-auto mb-3" />
-            <h3 class="font-semibold text-gray-800 dark:text-white mb-2">
-              Lead Management
-            </h3>
+          <div class="rounded-lg bg-white p-6 text-center shadow-md dark:bg-gray-800">
+            <IconsUsersIcon class="mx-auto mb-3 h-8 w-8 text-green-500" />
+            <h3 class="mb-2 font-semibold text-gray-800 dark:text-white">Lead Management</h3>
             <p class="text-sm text-gray-600 dark:text-gray-300">
               Organize and follow up with your potential customers
             </p>
           </div>
-          <div
-            class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 text-center"
-          >
-            <IconsCogIcon class="w-8 h-8 text-purple-500 mx-auto mb-3" />
-            <h3 class="font-semibold text-gray-800 dark:text-white mb-2">
-              Settings
-            </h3>
+          <div class="rounded-lg bg-white p-6 text-center shadow-md dark:bg-gray-800">
+            <IconsCogIcon class="mx-auto mb-3 h-8 w-8 text-purple-500" />
+            <h3 class="mb-2 font-semibold text-gray-800 dark:text-white">Settings</h3>
             <p class="text-sm text-gray-600 dark:text-gray-300">
               Customize your CRM experience and preferences
             </p>
@@ -156,56 +129,59 @@
 </template>
 
 <script lang="ts" setup>
-const auth = useAuth();
-console.log("auth =>", auth.user);
+definePageMeta({
+  middleware: 'authenticated',
+})
+
+const { data } = useAuth()
+console.log('auth data =>', data)
 
 // Helper function to get user initials
 const getUserInitials = (user: any) => {
-  if (!user) return "?";
+  if (!user) return '?'
 
-  const firstName =
-    user.firstName || user.first_name || user.name?.split(" ")[0] || "";
-  const lastName =
-    user.lastName || user.last_name || user.name?.split(" ")[1] || "";
+  const firstName = user.firstName || user.first_name || user.name?.split(' ')[0] || ''
+  const lastName = user.lastName || user.last_name || user.name?.split(' ')[1] || ''
 
-  return (firstName.charAt(0) + lastName.charAt(0)).toUpperCase() || "U";
-};
+  return (firstName.charAt(0) + lastName.charAt(0)).toUpperCase() || 'U'
+}
 
 // Helper function to get user display name
 const getUserDisplayName = (user: any) => {
-  if (!user) return "User";
+  if (!user) return 'User'
 
   // Try different possible name fields
   if (user.firstName && user.lastName) {
-    return `${user.firstName} ${user.lastName}`;
+    return `${user.firstName} ${user.lastName}`
   }
   if (user.first_name && user.last_name) {
-    return `${user.first_name} ${user.last_name}`;
+    return `${user.first_name} ${user.last_name}`
   }
   if (user.name) {
-    return user.name;
+    return user.name
   }
   if (user.firstName) {
-    return user.firstName;
+    return user.firstName
   }
   if (user.first_name) {
-    return user.first_name;
+    return user.first_name
   }
 
-  return user.email?.split("@")[0] || "User";
-};
+  return user.email?.split('@')[0] || 'User'
+}
 
 // Logout function
 const logout = async () => {
   try {
-    await auth.signOut();
-    useToast().showSuccess("Logged out successfully");
-    await navigateTo("/login");
+    const { signOut } = useAuth()
+    await signOut()
+    useToast().showSuccess('Logged out successfully')
+    await navigateTo('/login')
   } catch (error) {
-    console.error("Logout error:", error);
-    useToast().showError("Error logging out");
+    console.error('Logout error:', error)
+    useToast().showError('Error logging out')
   }
-};
+}
 </script>
 
 <style scoped>
