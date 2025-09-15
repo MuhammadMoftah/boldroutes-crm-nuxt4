@@ -1,7 +1,7 @@
 <template>
   <section>
-    <ThemePageTitle text="Projects" />
-    <ThemeDataTable />
+    <!-- <ThemeDataTable /> -->
+    <ThemeDataTableExample />
   </section>
 </template>
 

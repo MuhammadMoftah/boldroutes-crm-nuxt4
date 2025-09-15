@@ -11,7 +11,7 @@
         :class="isHidden ? 'ml-[-255px]' : 'ml-[0px]'"
       >
         <aside
-          class="mt-4 grid h-[calc(100vh-100px)] place-items-center rounded-lg bg-slate-200 text-lg font-bold text-slate-600"
+          class="grid h-[calc(100vh-100px)] place-items-center rounded-lg bg-slate-200 text-lg font-bold text-slate-600"
         >
           Sidebar here ...
         </aside>
