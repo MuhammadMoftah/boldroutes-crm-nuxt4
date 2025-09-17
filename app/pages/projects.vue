@@ -1,6 +1,11 @@
 <template>
   <section>
-    <ThemeDataTable :loading="projectsStore.loading" :items="projectsStore.data" :headers="headers">
+    <ThemeDataTable
+      :loading="projectsStore.loading"
+      :rows-per-page="parseInt(route.query.perPage as string) || 15"
+      :items="projectsStore.data"
+      :headers="headers"
+    >
       <template #item-id="{ id }">
         <span class="badge badge-primary">{{ id }}</span>
       </template>
@@ -49,10 +54,47 @@ definePageMeta({
 })
 
 const projectsStore = useProjectsStore()
+const route = useRoute()
+const router = useRouter()
 
-onMounted(() => {
-  projectsStore.getAll()
+// Initialize pagination with default values
+const initializePagination = async () => {
+  const query = route.query
+
+  // Set default values if not present in URL
+  const defaultQuery = {
+    page: query.page || '1',
+    perPage: query.perPage || '15',
+    include: query.include || projectsStore.includes,
+  }
+
+  // Update URL with default values if they're missing
+  const needsUpdate = !query.page || !query.perPage || !query.include
+
+  if (needsUpdate) {
+    await router.replace({
+      query: {
+        ...route.query,
+        ...defaultQuery,
+      },
+    })
+  }
+}
+
+// Watch for query parameter changes and refetch data
+watch(
+  () => route.query,
+  async () => {
+    await projectsStore.getAll()
+  },
+  { deep: true }
+)
+
+onMounted(async () => {
+  await initializePagination()
+  await projectsStore.getAll()
 })
+
 const headers = [
   { text: 'ID', value: 'id' },
   { text: 'Name', value: 'name' },

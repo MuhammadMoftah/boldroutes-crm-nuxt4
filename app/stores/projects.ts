@@ -15,10 +15,19 @@ export const useProjectsStore = defineStore('useProjectsStore', {
   actions: {
     getAll() {
       this.loading = true
-      $http(this.url + '?include=' + this.includes, {
-        params: {
-          ...useRoute().query,
-        },
+      const route = useRoute()
+      const query = route.query
+
+      // Build query parameters with defaults
+      const params = {
+        include: query.include || this.includes,
+        page: query.page || '1',
+        perPage: query.perPage || '15',
+        ...query, // Include any other query parameters
+      }
+
+      $http(this.url, {
+        params,
       })
         .then((res) => {
           console.log('res', res)
@@ -32,7 +41,7 @@ export const useProjectsStore = defineStore('useProjectsStore', {
           useToast().errorHandler(err)
         })
     },
-    getById(id, params) {
+    getById(id: string | number, params: Record<string, any>) {
       this.loading = true
       $http(`${this.url}/${id}`, {
         params: {
