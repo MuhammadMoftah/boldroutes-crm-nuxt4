@@ -1,6 +1,6 @@
 <template>
   <section>
-    <ThemeDataTable :items="projectsStore.data" :headers="headers">
+    <ThemeDataTable :loading="projectsStore.loading" :items="projectsStore.data" :headers="headers">
       <template #item-id="{ id }">
         <span class="badge badge-primary">{{ id }}</span>
       </template>
