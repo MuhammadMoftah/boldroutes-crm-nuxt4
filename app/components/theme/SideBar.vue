@@ -1,0 +1,224 @@
+<template>
+  <section>
+    <div
+      class="flex flex-col py-5 space-y-2 text-sm shadow-sm border-1 dark:bg-dark-secondary rounded-2xl border-slate-100 dark:border-slate-700"
+    >
+      <!-- Task Management -->
+      <NuxtLink
+        to="/task-management"
+        class="flex items-center p-4 capitalize duration-200 bg-white rounded-md group h-14 hover:pl-6 text-slate-500 theme-shadow dark:bg-transparent dark:text-slate-300 dark:shadow-none dark:hover:text-slate-100/90"
+        :class="$route.name === 'task-management' && 'pl-6'"
+      >
+        <span
+          class="relative items-center justify-center w-2 h-2 mr-3 duration-200 group-hover:flex"
+          :class="$route.name === 'task-management' ? 'flex' : 'hidden'"
+        >
+          <span
+            class="absolute inline-flex items-center justify-between w-full h-full rounded-full opacity-75 animate-ping bg-sky-400"
+          />
+          <span class="relative inline-flex w-1 h-1 rounded-full bg-sky-500" />
+        </span>
+
+        <span class="flex items-end">
+          <TaskListIcon class="w-5 h-5 mr-4 text-sky-500 icon" />
+          <span class="text-sm font-semibold">Task Management</span>
+        </span>
+      </NuxtLink>
+
+      <!-- Developers -->
+      <NuxtLink
+        to="/developers"
+        class="flex items-center p-4 capitalize duration-200 bg-white rounded-md group h-14 hover:pl-6 text-slate-500 theme-shadow dark:bg-transparent dark:text-slate-300 dark:shadow-none dark:hover:text-slate-100/90"
+        :class="$route.name === 'developers' && 'pl-6'"
+      >
+        <span
+          class="relative items-center justify-center w-2 h-2 mr-3 group-hover:flex"
+          :class="$route.name === 'developers' ? 'flex' : 'hidden'"
+        >
+          <span class="absolute inline-flex w-full h-full rounded-full opacity-75 animate-ping bg-sky-400" />
+          <span class="relative inline-flex w-1 h-1 rounded-full bg-sky-500" />
+        </span>
+
+        <span class="flex items-end">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-6 h-6 mr-4 text-theme-orange icon"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+            />
+          </svg>
+          <span class="text-sm font-semibold">Developers</span>
+        </span>
+      </NuxtLink>
+
+      <!-- Projects -->
+      <NuxtLink
+        to="/projects"
+        class="flex items-center p-4 capitalize duration-200 bg-white rounded-md group h-14 hover:pl-6 text-slate-500 theme-shadow dark:bg-transparent dark:text-slate-300 dark:shadow-none dark:hover:text-slate-100/90"
+        :class="$route.name === 'projects' && 'pl-6'"
+      >
+        <span
+          class="relative items-center justify-center w-2 h-2 mr-3 duration-200 group-hover:flex"
+          :class="$route.name === 'projects' ? 'flex' : 'hidden'"
+        >
+          <span class="absolute inline-flex w-full h-full rounded-full opacity-75 animate-ping bg-sky-400" />
+          <span class="relative inline-flex w-1 h-1 rounded-full bg-sky-500" />
+        </span>
+
+        <span class="flex items-end">
+          <svg
+            class="w-6 h-6 mr-4 text-theme-teal icon"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+            />
+          </svg>
+          <span class="text-sm font-semibold">Projects</span>
+        </span>
+      </NuxtLink>
+
+      <!-- My Team -->
+      <NuxtLink
+        to="/my-team"
+        class="flex items-center p-4 capitalize duration-200 bg-white rounded-md group h-14 hover:pl-6 text-slate-500 theme-shadow dark:bg-transparent dark:text-slate-300 dark:shadow-none dark:hover:text-slate-100/90"
+        :class="$route.name === 'my-team' && 'pl-6'"
+      >
+        <span
+          class="relative items-center justify-center w-2 h-2 mr-3 duration-200 group-hover:flex"
+          :class="$route.name === 'my-team' ? 'flex' : 'hidden'"
+        >
+          <span class="absolute inline-flex w-full h-full rounded-full opacity-75 animate-ping bg-sky-400" />
+          <span class="relative inline-flex w-1 h-1 rounded-full bg-sky-500" />
+        </span>
+
+        <span class="flex items-end">
+          <GroupIcon class="w-6 h-6 mr-4 text-theme-green icon" />
+          <span class="text-sm font-semibold">My Team</span>
+        </span>
+      </NuxtLink>
+
+      <!-- Set Watcher -->
+      <NuxtLink
+        to="/set-watcher"
+        class="flex items-center p-4 capitalize duration-200 bg-white rounded-md group h-14 hover:pl-6 text-slate-500 theme-shadow dark:bg-transparent dark:text-slate-300 dark:shadow-none dark:hover:text-slate-100/90"
+        :class="$route.name === 'set-watcher' && 'pl-6'"
+      >
+        <span
+          class="relative items-center justify-center w-2 h-2 mr-3 duration-200 group-hover:flex"
+          :class="$route.name === 'set-watcher' ? 'flex' : 'hidden'"
+        >
+          <span class="absolute inline-flex w-full h-full rounded-full opacity-75 animate-ping bg-sky-400" />
+          <span class="relative inline-flex w-1 h-1 rounded-full bg-sky-500" />
+        </span>
+
+        <span class="flex items-end">
+          <EyesIcon class="w-6 h-6 mr-4 text-theme-blue icon" />
+          <span class="text-sm font-semibold">Set Watcher</span>
+        </span>
+      </NuxtLink>
+
+      <!-- Leave Requests -->
+      <NuxtLink
+        to="/leave-requests"
+        class="flex items-center p-4 capitalize duration-200 bg-white rounded-md group h-14 hover:pl-6 text-slate-500 theme-shadow dark:bg-transparent dark:text-slate-300 dark:shadow-none dark:hover:text-slate-100/90"
+        :class="$route.name === 'leave-requests' && 'pl-6'"
+      >
+        <span
+          class="relative items-center justify-center w-2 h-2 mr-3 duration-200 group-hover:flex"
+          :class="$route.name === 'leave-requests' ? 'flex' : 'hidden'"
+        >
+          <span class="absolute inline-flex w-full h-full rounded-full opacity-75 animate-ping bg-sky-400" />
+          <span class="relative inline-flex w-1 h-1 rounded-full bg-sky-500" />
+        </span>
+
+        <span class="flex items-end">
+          <HumanRequestIcon class="w-6 h-6 mr-4 text-slate-600 icon" />
+          <span class="text-sm font-semibold">Leave Request</span>
+        </span>
+      </NuxtLink>
+
+      <!-- Fast Travel -->
+      <NuxtLink
+        to="/fast-travel"
+        class="flex items-center p-4 capitalize duration-200 bg-white rounded-md group h-14 hover:pl-6 text-slate-500 theme-shadow dark:bg-transparent dark:text-slate-300 dark:shadow-none dark:hover:text-slate-100/90"
+        :class="$route.name === 'fast-travel' && 'pl-6'"
+      >
+        <span
+          class="relative items-center justify-center w-2 h-2 mr-3 duration-200 group-hover:flex"
+          :class="$route.name === 'fast-travel' ? 'flex' : 'hidden'"
+        >
+          <span class="absolute inline-flex w-full h-full rounded-full opacity-75 animate-ping bg-sky-400" />
+          <span class="relative inline-flex w-1 h-1 rounded-full bg-sky-500" />
+        </span>
+
+        <span class="flex items-end">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-6 h-6 mr-4 text-theme-yellow icon"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+            />
+          </svg>
+          <span class="text-sm font-semibold">Fast Travel</span>
+        </span>
+      </NuxtLink>
+
+      <!-- Settings -->
+      <NuxtLink
+        to="/settings"
+        class="flex items-center p-4 capitalize duration-200 bg-white rounded-md group h-14 hover:pl-6 text-slate-500 theme-shadow dark:bg-transparent dark:text-slate-300 dark:shadow-none dark:hover:text-slate-100/90"
+        :class="$route.name === 'settings' && 'pl-6'"
+      >
+        <span
+          class="relative items-center justify-center w-2 h-2 mr-3 duration-200 group-hover:flex"
+          :class="$route.name === 'settings' ? 'flex' : 'hidden'"
+        >
+          <span class="absolute inline-flex w-full h-full rounded-full opacity-75 animate-ping bg-sky-400" />
+          <span class="relative inline-flex w-1 h-1 rounded-full bg-sky-500" />
+        </span>
+
+        <span class="flex items-end">
+          <Cog6ToothIcon class="w-6 h-6 mr-4 text-theme-purple icon" />
+          <span class="text-sm font-semibold">Settings</span>
+        </span>
+      </NuxtLink>
+    </div>
+  </section>
+</template>
+
+<script setup lang="ts">
+import { useNuxtApp } from "#app"
+// import { TaskListIcon, UsersIcon as GroupIcon, EyeIcon as EyesIcon, Cog6ToothIcon } from "@heroicons/vue/24/outline"
+// ⚠️ HumanRequestIcon is custom → make sure you have it globally registered or import here
+
+// const { $permCheck } = useNuxtApp()
+
+defineProps<{ collapseStatus: boolean }>()
+</script>
+
+<!-- <style scoped>
+.nuxt-link-exact-active {
+  @apply bg-black text-white font-semibold dark:bg-dark-secondary dark:text-slate-100;
+}
+</style> -->
