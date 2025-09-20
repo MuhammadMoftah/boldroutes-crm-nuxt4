@@ -5,6 +5,7 @@
       :rows-per-page="parseInt(route.query.perPage as string) || 15"
       :items="projectsStore.data"
       :headers="headers"
+      :meta="projectsStore.meta"
     >
       <template #item-id="{ id }">
         <span class="badge badge-primary">{{ id }}</span>
