@@ -173,6 +173,73 @@
           </div>
         </section>
 
+        <!-- Phone Input Component -->
+        <section class="rounded-lg bg-white p-6 shadow-sm">
+          <h2 class="mb-6 text-xl font-semibold text-slate-800">Phone Input Component</h2>
+          <div class="space-y-6">
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+              <ThemePhoneInput
+                v-model="formData.phoneUS"
+                label="US Phone Number"
+                placeholder="(555) 123-4567"
+                default-country="US"
+                required
+                help-text="Enter your US phone number"
+              />
+
+              <ThemePhoneInput
+                v-model="formData.phoneUK"
+                label="UK Phone Number"
+                placeholder="20 7946 0958"
+                default-country="GB"
+                help-text="Enter your UK phone number"
+              />
+
+              <ThemePhoneInput
+                v-model="formData.phoneDE"
+                label="German Phone Number"
+                placeholder="30 12345678"
+                default-country="DE"
+                help-text="Enter your German phone number"
+              />
+
+              <ThemePhoneInput
+                v-model="formData.phoneFR"
+                label="French Phone Number"
+                placeholder="1 23 45 67 89"
+                default-country="FR"
+                help-text="Enter your French phone number"
+              />
+            </div>
+
+            <div class="space-y-4">
+              <ThemePhoneInput
+                v-model="formData.phoneInternational"
+                label="International Phone Number"
+                placeholder="Select country and enter number"
+                help-text="Choose any country and enter the phone number"
+                @country-change="onCountryChange"
+              />
+
+              <ThemePhoneInput
+                v-model="formData.phoneError"
+                label="Phone with Error"
+                placeholder="(555) 123-4567"
+                default-country="US"
+                error="Please enter a valid phone number"
+              />
+
+              <ThemePhoneInput
+                v-model="formData.phoneDisabled"
+                label="Disabled Phone Input"
+                placeholder="(555) 123-4567"
+                default-country="US"
+                disabled
+              />
+            </div>
+          </div>
+        </section>
+
         <!-- Form Data Display -->
         <section class="rounded-lg bg-white p-6 shadow-sm">
           <h2 class="mb-6 text-xl font-semibold text-slate-800">Form Data</h2>
@@ -207,7 +274,19 @@ const formData = reactive({
   error: '',
   username: '',
   phone: '',
+  phoneUS: '',
+  phoneUK: '',
+  phoneDE: '',
+  phoneFR: '',
+  phoneInternational: '',
+  phoneError: '',
+  phoneDisabled: '+1 (555) 123-4567',
 })
+
+// Country change handler
+const onCountryChange = (country: any) => {
+  console.log('Country changed to:', country.name, country.code)
+}
 </script>
 
 <style scoped>
