@@ -25,7 +25,7 @@
       </template>
     </EasyDataTable>
 
-    <ThemePagination class="py-5" @current="$emit('current', $event)" :meta="meta" />
+    <ThemePagination class="py-5" :meta="meta" />
   </div>
 </template>
 

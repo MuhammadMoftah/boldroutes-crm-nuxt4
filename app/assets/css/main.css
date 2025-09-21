@@ -28,3 +28,19 @@
   --26774109: rgb(111, 132, 146);
   width: 0 !important;
 }
+
+.click-animation {
+  @apply active:scale-95;
+}
+
+/* Remove arrows in Chrome, Safari, Edge, Opera */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Remove arrows in Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}

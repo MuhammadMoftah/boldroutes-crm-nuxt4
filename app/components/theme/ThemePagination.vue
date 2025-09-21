@@ -1,9 +1,9 @@
 <template>
-  <div class="flex justify-center">
-    <div class="join">
+  <div class="flex items-center justify-center py-6">
+    <nav class="flex items-center space-x-0.5" aria-label="Pagination">
       <!-- Previous button -->
       <button
-        class="join-item btn btn-outline"
+        class="inline-flex items-center rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-500 transition-all duration-200 ease-in-out hover:bg-slate-50 hover:text-slate-700 hover:shadow-sm disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-white disabled:hover:text-slate-500 disabled:hover:shadow-none"
         :disabled="currentPage <= 1"
         @click="goToPage(currentPage - 1)"
       >
@@ -13,45 +13,54 @@
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          class="h-4 w-4"
+          class="mr-1 h-4 w-4"
         >
           <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
         </svg>
-        Previous
+        <!-- <span class="hidden sm:inline">Previous</span> -->
       </button>
 
       <!-- Page numbers -->
       <template v-for="page in visiblePages" :key="page">
         <button
           v-if="page !== '...'"
-          class="join-item btn btn-outline"
-          :class="{ 'btn-active': page === currentPage }"
-          @click="goToPage(page)"
+          class="click-animation inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg text-sm font-medium transition-all duration-200 ease-in-out"
+          :class="
+            page === currentPage
+              ? 'bg-slate-600 text-white shadow-md hover:bg-slate-700 hover:shadow-lg'
+              : 'border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 hover:text-slate-900 hover:shadow-sm'
+          "
+          @click="goToPage(page as number)"
         >
           {{ page }}
         </button>
-        <span v-else class="join-item btn btn-disabled">...</span>
+        <span
+          v-else
+          class="inline-flex h-10 w-10 items-center justify-center text-sm font-medium text-slate-400"
+        >
+          ...
+        </span>
       </template>
 
       <!-- Next button -->
       <button
-        class="join-item btn btn-outline"
+        class="inline-flex items-center rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-500 transition-all duration-200 ease-in-out hover:bg-slate-50 hover:text-slate-700 hover:shadow-sm disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-white disabled:hover:text-slate-500 disabled:hover:shadow-none"
         :disabled="currentPage >= totalPages"
         @click="goToPage(currentPage + 1)"
       >
-        Next
+        <!-- <span class="hidden sm:inline">Next</span> -->
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          class="h-4 w-4"
+          class="ml-1 h-4 w-4"
         >
           <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
         </svg>
       </button>
-    </div>
+    </nav>
   </div>
 </template>
 
@@ -147,6 +156,8 @@ const goToPage = async (page: number) => {
 </script>
 
 <style scoped>
-/* Additional custom styles if needed */
+@reference "tailwindcss";
+button {
+  @apply h-9 cursor-pointer hover:translate-y-[-2px];
+}
 </style>
-
