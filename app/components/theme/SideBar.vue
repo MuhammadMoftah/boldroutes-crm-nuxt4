@@ -20,7 +20,8 @@
         </span>
 
         <span class="flex items-end">
-          <TaskListIcon class="icon mr-4 h-5 w-5 text-sky-500" />
+          <!-- Changed from text-sky-500 to text-slate-600 -->
+          <TaskListIcon class="icon mr-4 h-5 w-5 text-slate-600" />
           <span class="text-sm font-semibold">Task Management</span>
         </span>
       </NuxtLink>
@@ -112,7 +113,7 @@
         </span>
 
         <span class="flex items-end">
-          <IconsGroupIcon class="text-theme-green icon mr-4 h-6 w-6" />
+          <ClipboardDocumentCheckIcon class="text-theme-green icon mr-4 h-6 w-6" />
           <span class="text-sm font-semibold">My Team</span>
         </span>
       </NuxtLink>
@@ -134,7 +135,7 @@
         </span>
 
         <span class="flex items-end">
-          <EyesIcon class="text-theme-blue icon mr-4 h-6 w-6" />
+          <EyeIcon class="text-slate-600 icon mr-4 h-6 w-6" />
           <span class="text-sm font-semibold">Set Watcher</span>
         </span>
       </NuxtLink>
@@ -156,7 +157,8 @@
         </span>
 
         <span class="flex items-end">
-          <HumanRequestIcon class="icon mr-4 h-6 w-6 text-slate-600" />
+          <!-- Replaced HumanRequestIcon with UserMinusIcon -->
+          <UserMinusIcon class="icon mr-4 h-6 w-6 text-slate-600" />
           <span class="text-sm font-semibold">Leave Request</span>
         </span>
       </NuxtLink>
@@ -222,17 +224,13 @@
 </template>
 
 <script setup lang="ts">
-import { useNuxtApp } from '#app'
-// import { TaskListIcon, UsersIcon as GroupIcon, EyeIcon as EyesIcon, Cog6ToothIcon } from "@heroicons/vue/24/outline"
-// ⚠️ HumanRequestIcon is custom → make sure you have it globally registered or import here
-
-// const { $permCheck } = useNuxtApp()
+import { 
+  ClipboardDocumentListIcon as TaskListIcon,
+  ClipboardDocumentCheckIcon,
+  EyeIcon,
+  Cog6ToothIcon,
+  UserMinusIcon
+} from "@heroicons/vue/24/outline"
 
 defineProps<{ collapseStatus: boolean }>()
 </script>
-
-<!-- <style scoped>
-.nuxt-link-exact-active {
-  @apply bg-black text-white font-semibold dark:bg-dark-secondary dark:text-slate-100;
-}
-</style> -->
