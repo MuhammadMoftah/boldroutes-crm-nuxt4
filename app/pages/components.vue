@@ -3,6 +3,19 @@
     <div class="mx-auto max-w-4xl px-4">
       <h1 class="mb-8 text-3xl font-bold text-slate-900">Theme Input Components</h1>
 
+      <fieldset class="fieldset rounded-box w-md border border-slate-300 bg-slate-100 p-4">
+        <legend class="fieldset-legend">Testing section</legend>
+
+        {{ formData.selectedProject }}
+        <ThemeSelect url="projects" v-model="formData.selectedProject" />
+
+        <button class="btn" @click="$modal.value = 'global-modal'">open modal</button>
+        <button class="btn" @click="$drawer.value = 'global-drawer'">open Drawer</button>
+
+        <!-- drawer and modal  -->
+        <ThemeDrawer />
+        <GlobalDelete v-if="$modal.value === 'global-modal'" />
+      </fieldset>
       <div class="space-y-8">
         <!-- Basic Input Types -->
         <section class="rounded-lg bg-white p-6 shadow-sm">
@@ -281,6 +294,7 @@ const formData = reactive({
   phoneInternational: '',
   phoneError: '',
   phoneDisabled: '+1 (555) 123-4567',
+  selectedProject: null,
 })
 
 // Country change handler

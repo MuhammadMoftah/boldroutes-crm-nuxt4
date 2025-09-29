@@ -3,6 +3,7 @@ export const useGlobalStore = defineStore('useGlobalStore', {
     return {
       variable1: 'value1',
       modal: '',
+      drawer: '',
       activeItem: null,
     }
   },

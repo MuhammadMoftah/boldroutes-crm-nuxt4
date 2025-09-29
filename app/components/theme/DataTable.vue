@@ -7,7 +7,6 @@
       </span>
     </aside>
     <!-- <pre dir="ltr" class="text-xs">{{ headers }}</pre> -->
-
     <EasyDataTable
       :headers="headers"
       hide-footer

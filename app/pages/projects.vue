@@ -45,7 +45,7 @@
         <button class="btn btn-primary">Delete</button>
       </template>
     </ThemeDataTable>
-    <!-- <ThemeDataTableExample /> -->
+    <!-- <GlobalModal v-if="$modal.value === 'global-modal'" /> -->
   </section>
 </template>
 

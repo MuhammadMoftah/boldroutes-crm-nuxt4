@@ -1,14 +1,25 @@
 export default defineNuxtPlugin(() => {
   return {
     provide: {
-      modal: ref("modal"),
-      // modal: reactive("modal"),
-      // modal: "modal",
+      modal: computed({
+        get: () => useGlobalStore().modal,
+        set: (value: string) => {
+          useGlobalStore().modal = value
+        },
+      }),
+      drawer: computed({
+        get: () => useGlobalStore().drawer,
+        set: (value: string) => {
+          useGlobalStore().drawer = value
+        },
+      }),
       closeModal: () => {
-        // useGlobalStore().modal = "";
-        useNuxtApp().$modal.value = "";
-        useGlobalStore().activeItem = null;
+        useGlobalStore().modal = ''
+        useGlobalStore().activeItem = null
+      },
+      closeDrawer: () => {
+        useGlobalStore().drawer = ''
       },
     },
-  };
-});
+  }
+})
